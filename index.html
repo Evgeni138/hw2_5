@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .content__element {
+        width: 350px;
+        border: 1px solid black;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .img {
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="data.js"></script>
+
+    <div class="content"></div>
+    <script>
+      const dataFromCuriosity = JSON.parse(dataCuriocity)
+
+      dataFromCuriosity.forEach(element => {
+        const divContent = document.querySelector('.content')
+        const divEl = document.createElement('div')
+        divEl.classList.add('content__element')
+        divContent.appendChild(divEl)
+        const headingType = document.createElement('h2')
+        headingType.classList.add('heading__type')
+        headingType.textContent = element.id
+        divEl.appendChild(headingType)
+
+        const fotoDate = document.createElement('p')
+        fotoDate.classList.add('date')
+        fotoDate.textContent = element.earth_date
+        divEl.appendChild(fotoDate)
+
+        const photoUrl = document.createElement('img')
+        photoUrl.classList.add('img')
+        photoUrl.src = element.img_src
+        divEl.appendChild(photoUrl)
+      })
+    </script>
+  </body>
+</html>
